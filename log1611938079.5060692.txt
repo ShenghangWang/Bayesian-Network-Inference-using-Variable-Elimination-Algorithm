@@ -1,0 +1,266 @@
+Computation started at: 29/01/2021 17:34:39
+
+Beginning variable elimination on a network with the following variables: {'JohnCalls', 'MaryCalls', 'Burglary', 'Earthquake', 'Alarm'}
+
+
+Querying on: Alarm
+
+
+Evidence: {'Burglary': 'True'}
+
+
+Reduced factors based on provided evidence. 1 variables reduced
+
+
+Initial Factors:
+
+
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+
+  MaryCalls  Alarm  prob
+0      True   True  0.70
+1     False   True  0.30
+2      True  False  0.01
+3     False  False  0.99
+
+
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+
+   Alarm Earthquake  prob
+0   True       True  0.95
+1  False       True  0.05
+4   True      False  0.94
+5  False      False  0.06
+
+
+Elimination ordering heuristic: <function fewest_factors_first at 0x7fccbdd39d40>
+
+
+Following elimination ordering: ['JohnCalls', 'MaryCalls', 'Earthquake']
+
+
+----------------------------------------
+
+
+Eliminating: JohnCalls
+
+
+Multiplying following factors which contain X:
+
+
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+
+Multiplication produced:
+
+
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1      True  False  0.05
+2     False   True  0.10
+3     False  False  0.95
+
+
+Marginalizing above factor on JohnCalls
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+Adding marginalized factor to factor list, removing multiplied factors.
+
+
+Current total computations: 4
+
+
+Remaining factors:
+
+
+  MaryCalls  Alarm  prob
+0      True   True  0.70
+1     False   True  0.30
+2      True  False  0.01
+3     False  False  0.99
+
+
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+
+   Alarm Earthquake  prob
+0   True       True  0.95
+1  False       True  0.05
+4   True      False  0.94
+5  False      False  0.06
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+----------------------------------------
+
+
+Eliminating: MaryCalls
+
+
+Multiplying following factors which contain X:
+
+
+  MaryCalls  Alarm  prob
+0      True   True  0.70
+1     False   True  0.30
+2      True  False  0.01
+3     False  False  0.99
+
+
+Multiplication produced:
+
+
+   Alarm MaryCalls  prob
+0   True      True  0.70
+1   True     False  0.30
+2  False      True  0.01
+3  False     False  0.99
+
+
+Marginalizing above factor on MaryCalls
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+Adding marginalized factor to factor list, removing multiplied factors.
+
+
+Current total computations: 8
+
+
+Remaining factors:
+
+
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+
+   Alarm Earthquake  prob
+0   True       True  0.95
+1  False       True  0.05
+4   True      False  0.94
+5  False      False  0.06
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+----------------------------------------
+
+
+Eliminating: Earthquake
+
+
+Multiplying following factors which contain X:
+
+
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+
+   Alarm Earthquake  prob
+0   True       True  0.95
+1  False       True  0.05
+4   True      False  0.94
+5  False      False  0.06
+
+
+Multiplication produced:
+
+
+  Earthquake  Alarm    prob
+0       True   True  0.0190
+1       True  False  0.0010
+2      False   True  0.9212
+3      False  False  0.0588
+
+
+Marginalizing above factor on Earthquake
+
+
+   Alarm    prob
+0  False  0.0598
+1   True  0.9402
+
+
+Adding marginalized factor to factor list, removing multiplied factors.
+
+
+Current total computations: 14
+
+
+Remaining factors:
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+   Alarm    prob
+0  False  0.0598
+1   True  0.9402
+
+
+----------------------------------------
+
+
+Multiplying remaining factors
+
+
+Normalizing distribution of query variable.
+
+
+Inferred distribution for Alarm based on {'Burglary': 'True'}:
+
+
+   Alarm    prob
+0   True  0.9402
+1  False  0.0598
+
+
+Approximate total computations: 22
+
+
+Computation ends at 29/01/2021 17:34:39. 0.13541221618652344 seconds elapsed since log start.
+

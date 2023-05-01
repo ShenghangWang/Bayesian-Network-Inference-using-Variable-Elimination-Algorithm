@@ -1,0 +1,361 @@
+Computation started at: 29/01/2021 17:35:12
+
+Beginning variable elimination on a network with the following variables: {'JohnCalls', 'Earthquake', 'MaryCalls', 'Burglary', 'Alarm'}
+
+
+Querying on: JohnCalls
+
+
+Evidence: {}
+
+
+Reduced factors based on provided evidence. 0 variables reduced
+
+
+Initial Factors:
+
+
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+
+  MaryCalls  Alarm  prob
+0      True   True  0.70
+1     False   True  0.30
+2      True  False  0.01
+3     False  False  0.99
+
+
+  Burglary  prob
+0     True  0.01
+1    False  0.99
+
+
+   Alarm Burglary Earthquake   prob
+0   True     True       True  0.950
+1  False     True       True  0.050
+2   True    False       True  0.290
+3  False    False       True  0.710
+4   True     True      False  0.940
+5  False     True      False  0.060
+6   True    False      False  0.001
+7  False    False      False  0.999
+
+
+Elimination ordering heuristic: <function fewest_factors_first at 0x7f57ca1d4d40>
+
+
+Following elimination ordering: ['MaryCalls', 'Earthquake', 'Burglary', 'Alarm']
+
+
+----------------------------------------
+
+
+Eliminating: MaryCalls
+
+
+Multiplying following factors which contain X:
+
+
+  MaryCalls  Alarm  prob
+0      True   True  0.70
+1     False   True  0.30
+2      True  False  0.01
+3     False  False  0.99
+
+
+Multiplication produced:
+
+
+   Alarm MaryCalls  prob
+0   True      True  0.70
+1   True     False  0.30
+2  False      True  0.01
+3  False     False  0.99
+
+
+Marginalizing above factor on MaryCalls
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+Adding marginalized factor to factor list, removing multiplied factors.
+
+
+Current total computations: 4
+
+
+Remaining factors:
+
+
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+
+  Burglary  prob
+0     True  0.01
+1    False  0.99
+
+
+   Alarm Burglary Earthquake   prob
+0   True     True       True  0.950
+1  False     True       True  0.050
+2   True    False       True  0.290
+3  False    False       True  0.710
+4   True     True      False  0.940
+5  False     True      False  0.060
+6   True    False      False  0.001
+7  False    False      False  0.999
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+----------------------------------------
+
+
+Eliminating: Earthquake
+
+
+Multiplying following factors which contain X:
+
+
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+
+   Alarm Burglary Earthquake   prob
+0   True     True       True  0.950
+1  False     True       True  0.050
+2   True    False       True  0.290
+3  False    False       True  0.710
+4   True     True      False  0.940
+5  False     True      False  0.060
+6   True    False      False  0.001
+7  False    False      False  0.999
+
+
+Multiplication produced:
+
+
+  Earthquake Burglary  Alarm     prob
+0       True     True   True  0.01900
+1       True     True  False  0.00100
+2       True    False   True  0.00580
+3       True    False  False  0.01420
+4      False     True   True  0.92120
+5      False     True  False  0.05880
+6      False    False   True  0.00098
+7      False    False  False  0.97902
+
+
+Marginalizing above factor on Earthquake
+
+
+  Burglary  Alarm     prob
+0    False  False  0.99322
+1    False   True  0.00678
+2     True  False  0.05980
+3     True   True  0.94020
+
+
+Adding marginalized factor to factor list, removing multiplied factors.
+
+
+Current total computations: 16
+
+
+Remaining factors:
+
+
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+
+  Burglary  prob
+0     True  0.01
+1    False  0.99
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+  Burglary  Alarm     prob
+0    False  False  0.99322
+1    False   True  0.00678
+2     True  False  0.05980
+3     True   True  0.94020
+
+
+----------------------------------------
+
+
+Eliminating: Burglary
+
+
+Multiplying following factors which contain X:
+
+
+  Burglary  prob
+0     True  0.01
+1    False  0.99
+
+
+  Burglary  Alarm     prob
+0    False  False  0.99322
+1    False   True  0.00678
+2     True  False  0.05980
+3     True   True  0.94020
+
+
+Multiplication produced:
+
+
+  Burglary  Alarm      prob
+0     True   True  0.009402
+1     True  False  0.000598
+2    False   True  0.006712
+3    False  False  0.983288
+
+
+Marginalizing above factor on Burglary
+
+
+   Alarm      prob
+0  False  0.983886
+1   True  0.016114
+
+
+Adding marginalized factor to factor list, removing multiplied factors.
+
+
+Current total computations: 22
+
+
+Remaining factors:
+
+
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+   Alarm      prob
+0  False  0.983886
+1   True  0.016114
+
+
+----------------------------------------
+
+
+Eliminating: Alarm
+
+
+Multiplying following factors which contain X:
+
+
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+
+   Alarm      prob
+0  False  0.983886
+1   True  0.016114
+
+
+Multiplication produced:
+
+
+  JohnCalls  Alarm      prob
+0      True   True  0.014503
+1      True  False  0.049194
+2     False   True  0.001611
+3     False  False  0.934692
+
+
+Marginalizing above factor on Alarm
+
+
+  JohnCalls      prob
+0     False  0.936303
+1      True  0.063697
+
+
+Adding marginalized factor to factor list, removing multiplied factors.
+
+
+Current total computations: 30
+
+
+Remaining factors:
+
+
+  JohnCalls      prob
+0     False  0.936303
+1      True  0.063697
+
+
+----------------------------------------
+
+
+Multiplying remaining factors
+
+
+Normalizing distribution of query variable.
+
+
+Inferred distribution for JohnCalls based on {}:
+
+
+  JohnCalls      prob
+0      True  0.063697
+1     False  0.936303
+
+
+Approximate total computations: 34
+
+
+Computation ends at 29/01/2021 17:35:12. 0.1822800636291504 seconds elapsed since log start.
+
